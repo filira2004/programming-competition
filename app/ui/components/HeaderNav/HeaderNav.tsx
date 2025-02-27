@@ -20,8 +20,14 @@ const HeaderNav: FC<HeaderNavProps> = ({ isMenuOpen }) => {
       <Link href="/login" className={styles.login}>
         <p className={styles.baseText}>Войти</p>
       </Link>
-      <Link href="/register" className={styles.register}>
-        <p className={styles.baseText}>Регистрация</p>
+      <Link href="/login" className={styles.login}>
+        <p className={styles.baseText}>Войти</p>
+      </Link>
+      <Link href="/login" className={styles.login}>
+        <p className={styles.baseText}>Войти</p>
+      </Link>
+      <Link href="/login" className={styles.login}>
+        <p className={styles.baseText}>Войти</p>
       </Link>
     </nav>
   );

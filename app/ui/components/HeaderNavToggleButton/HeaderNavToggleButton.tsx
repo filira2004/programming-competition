@@ -14,7 +14,11 @@ const HeaderNavToggleButton: FC<HeaderNavToggleButtonProps> = ({
   toggleMenu,
 }) => {
   return (
-    <button className={styles.button} onClick={toggleMenu}>
+    <button
+      className={styles.button}
+      onClick={toggleMenu}
+      aria-label={isMenuOpen ? "Закрыть" : "Открыть"}
+    >
       {isMenuOpen ? (
         <XMarkIcon className={styles.xMark} />
       ) : (

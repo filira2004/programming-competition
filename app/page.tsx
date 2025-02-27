@@ -1,3 +1,7 @@
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <main style={{ flex: "1" }}>
+      <p>Home</p>
+    </main>
+  );
 }
