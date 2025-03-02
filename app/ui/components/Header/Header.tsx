@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.link}>
+      <Link href="/" scroll={false} className={styles.link}>
         <PCLogo />
       </Link>
       <HeaderNavToggleButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
