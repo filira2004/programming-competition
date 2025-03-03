@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.svg {
+  width: 32px;
+  height: 32px;
+  transform: rotate(6deg);
+}
+
+.paragraph {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  font-size: 1.25rem;
+}

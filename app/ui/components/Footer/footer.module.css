@@ -1,0 +1,22 @@
+.footer {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  padding: 15px 16px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background-color: #0000001a;
+}
+
+.paragraph {
+  color: #00000066;
+  text-align: center;
+  font-size: 0.9rem;
+}
