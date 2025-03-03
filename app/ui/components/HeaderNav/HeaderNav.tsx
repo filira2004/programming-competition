@@ -32,7 +32,12 @@ const HeaderNav: FC<HeaderNavProps> = ({ isMenuOpen }) => {
           <p className={styles.baseText}>{link.name}</p>
         </Link>
       ))}
-      <Link href="/login" className={styles.link}>
+      <Link
+        href="/login"
+        className={classNames(styles.link, {
+          [styles.activeLink]: pathname === "/login",
+        })}
+      >
         <p className={styles.baseText}>Войти</p>
       </Link>
     </nav>
