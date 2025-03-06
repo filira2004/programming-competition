@@ -36,7 +36,10 @@ const Event: FC<EventProps> = ({ event, ispastEvents }) => {
           </p>
         </div>
       </section>
-      <p className={styles.date}>Дата проведения: {event.event_date}</p>
+      <p className={styles.date}>
+        Дата проведения:{" "}
+        {new Date(event.event_date).toLocaleDateString("ru-RU")}
+      </p>
       {ispastEvents && (
         <Link
           href={`/dashboard/competitions/${event.id}/details`}
@@ -45,7 +48,6 @@ const Event: FC<EventProps> = ({ event, ispastEvents }) => {
           Подробнее
         </Link>
       )}
-      {/* {children} */}
     </article>
   );
 };
