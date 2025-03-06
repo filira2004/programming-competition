@@ -2,7 +2,6 @@ import { FC } from "react";
 import styles from "./upcommingEvents.module.css";
 import { EventTypeRaw } from "@/app/lib/definitions";
 import Event from "../Event/Event";
-import Link from "next/link";
 
 interface UpcomingEventsProps {
   upcomingEvents: EventTypeRaw[];
@@ -17,14 +16,11 @@ const UpcomingEvents: FC<UpcomingEventsProps> = ({ upcomingEvents }) => {
       ) : (
         <div className={styles.wrapper}>
           {upcomingEvents.map((upcomingEvent) => (
-            <Event key={upcomingEvent.id} event={upcomingEvent}>
-              <Link
-                href={`/dashboard/competitions/${upcomingEvent.id}/details`}
-                className={styles.details}
-              >
-                Подробнее
-              </Link>
-            </Event>
+            <Event
+              key={upcomingEvent.id}
+              event={upcomingEvent}
+              ispastEvents={false}
+            />
           ))}
         </div>
       )}

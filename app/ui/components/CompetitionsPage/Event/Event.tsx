@@ -1,14 +1,15 @@
 import { EventTypeRaw } from "@/app/lib/definitions";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import styles from "./event.module.css";
 import { TrophyIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 interface EventProps {
   event: EventTypeRaw;
-  children?: ReactNode;
+  ispastEvents: boolean;
 }
 
-const Event: FC<EventProps> = ({ event, children }) => {
+const Event: FC<EventProps> = ({ event, ispastEvents }) => {
   return (
     <article className={styles.wrapper}>
       <h3 className={styles.titleH3}>{event.event_name}</h3>
@@ -36,7 +37,15 @@ const Event: FC<EventProps> = ({ event, children }) => {
         </div>
       </section>
       <p className={styles.date}>Дата проведения: {event.event_date}</p>
-      {children}
+      {ispastEvents && (
+        <Link
+          href={`/dashboard/competitions/${event.id}/details`}
+          className={styles.details}
+        >
+          Подробнее
+        </Link>
+      )}
+      {/* {children} */}
     </article>
   );
 };

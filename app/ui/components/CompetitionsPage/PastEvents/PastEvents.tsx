@@ -16,7 +16,7 @@ const PastEvents: FC<PastEventsProps> = ({ pastEvents }) => {
       ) : (
         <div className={styles.wrapper}>
           {pastEvents.map((pastEvent) => (
-            <Event key={pastEvent.id} event={pastEvent}></Event>
+            <Event key={pastEvent.id} event={pastEvent} ispastEvents={true} />
           ))}
         </div>
       )}
