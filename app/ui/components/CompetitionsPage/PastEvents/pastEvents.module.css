@@ -1,0 +1,49 @@
+.titleH2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
+.titleH3 {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 18px auto 0 auto;
+  max-width: 800px;
+}
+
+.details {
+  background-color: #0582ff;
+  color: white;
+  min-width: 144px;
+  border: none;
+  margin: 8px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 10px 5px 12px;
+  flex-grow: 1;
+  transition: background-color 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .details:hover {
+    background-color: #045ac3;
+  }
+}
+
+@media (hover: none) {
+  .details:active {
+    background-color: #045ac3;
+  }
+}

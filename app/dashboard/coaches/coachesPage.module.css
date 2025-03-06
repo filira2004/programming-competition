@@ -1,0 +1,10 @@
+.titleH1 {
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.wrapper {
+  margin-top: 24px;
+}
