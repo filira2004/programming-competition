@@ -35,9 +35,7 @@ const Event: FC<EventProps> = ({ event, children }) => {
           </p>
         </div>
       </section>
-      <p className={styles.date}>
-        Дата проведения: {event.event_date.split("T", 1).join("")}
-      </p>
+      <p className={styles.date}>Дата проведения: {event.event_date}</p>
       {children}
     </article>
   );
