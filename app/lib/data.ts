@@ -1,5 +1,10 @@
 import postgres from "postgres";
-import { CoachType, EventTypeRaw, ParticipantType } from "./definitions";
+import {
+  CoachType,
+  EventTypeRaw,
+  ParticipantByEventIdRaw,
+  ParticipantType,
+} from "./definitions";
 import { unstable_cache } from "next/cache";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
@@ -92,4 +97,71 @@ export const fetchCachedAllEvents = unstable_cache(
   fetchAllEvents,
   ["allEvents"],
   { tags: ["allEvents"] }
+);
+
+async function fetchEventById(eventId: string) {
+  try {
+    const data = await sql<EventTypeRaw[]>`SELECT 
+          e.id AS event_id,
+          e.name AS event_name,
+
+          d.date AS event_date,
+
+          v.name AS venue_name,
+          v.address AS venue_address,
+          v.capacity AS venue_capacity,
+
+          o.name AS organizer_name,
+          o.type AS organizer_type,
+          o.contact_info AS organizer_contact_info
+
+      FROM events e
+      LEFT JOIN dates d ON e.date_id = d.id
+      LEFT JOIN venues v ON e.venue_id = v.id
+      LEFT JOIN organizers o ON e.organizer_id = o.id
+
+      WHERE e.id = ${eventId};`;
+    return data;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch event by id data.");
+  }
+}
+
+export const fetchCachedEventById = unstable_cache(
+  fetchEventById,
+  ["eventById"],
+  { tags: ["eventById"] }
+);
+
+async function fetchParticipantsByEventId(eventId: string) {
+  try {
+    const data = await sql<ParticipantByEventIdRaw[]>`SELECT 
+          p.id AS participant_id,
+          p.full_name AS participant_name,
+          p.university_name,
+          p.course_number,
+          p.group_number,
+
+          c.full_name AS coach_name,
+
+          pa.score AS participant_score
+
+      FROM participations pa
+      JOIN participants p ON pa.participant_id = p.id
+      LEFT JOIN workout w ON pa.event_id = w.event_id AND p.id = w.participant_id
+      LEFT JOIN coaches c ON w.coach_id = c.id
+
+      WHERE pa.event_id = ${eventId};`;
+    return data;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch participants by event id data.");
+  }
+}
+
+export const fetchCachedParticipantsByEventId = unstable_cache(
+  fetchParticipantsByEventId,
+  ["participantsByEventId"],
+  { tags: ["participantsByEventId"] }
 );
