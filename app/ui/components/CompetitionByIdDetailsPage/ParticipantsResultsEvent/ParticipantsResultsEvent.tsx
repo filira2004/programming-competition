@@ -1,18 +1,26 @@
 import { ParticipantByEventIdRaw } from "@/app/lib/definitions";
 import { FC } from "react";
+import styles from "./participantsResultsEvent.module.css";
+import ParticipantResult from "../ParticipantResult/ParticipantResult";
 
 interface ParticipantsResultsEventProps {
-  participant: ParticipantByEventIdRaw;
+  participants: ParticipantByEventIdRaw[];
 }
 
 const ParticipantsResultsEvent: FC<ParticipantsResultsEventProps> = ({
-  participant,
+  participants,
 }) => {
   return (
     <div>
-      <h2>Результаты соревнований</h2>
-      <p>{participant.coach_name}</p>
-      <p>{participant.participant_name}</p>
+      <h2 className={styles.titleH2}>Результаты соревнований</h2>
+      <div className={styles.wrapper}>
+        {participants.map((participant) => (
+          <ParticipantResult
+            key={participant.participant_id}
+            participant={participant}
+          />
+        ))}
+      </div>
     </div>
   );
 };

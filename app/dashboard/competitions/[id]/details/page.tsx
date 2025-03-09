@@ -29,7 +29,7 @@ const Page: FC<PageProps> = async ({ params }) => {
       </section>
 
       <section className={styles.wrapper}>
-        <ParticipantsResultsEvent participant={participants[0]} />
+        <ParticipantsResultsEvent participants={participants} />
       </section>
     </div>
   );
