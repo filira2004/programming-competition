@@ -90,3 +90,13 @@ export type EventTypeRaw = {
   organizer_type: OrganizerType["type"];
   organizer_contact_info: OrganizerType["contact_info"];
 };
+
+export type ParticipantByEventIdRaw = {
+  participant_id: ParticipantType["id"];
+  participant_name: ParticipantType["full_name"];
+  university_name: ParticipantType["university_name"];
+  course_number: ParticipantType["course_number"];
+  group_number: ParticipantType["group_number"];
+  coach_name: CoachType["full_name"];
+  participant_score: ParticipationType["score"];
+};
