@@ -1,0 +1,63 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 12px;
+  background-color: #f7f7f5;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 12px 32px,
+    rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.titleH2 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.baseText {
+  font-size: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.input {
+  padding: 4px 8px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.submitButton {
+  min-width: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 5px 12px;
+  flex-grow: 1;
+  background-color: #0582ff;
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+  .submitButton:hover {
+    background-color: #045ac3;
+  }
+}
+
+@media (hover: none) {
+  .submitButton:active {
+    background-color: #045ac3;
+  }
+}
