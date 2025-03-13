@@ -20,6 +20,7 @@ const CreateForm = () => {
           className={styles.input}
           required
           maxLength={1000}
+          placeholder="Введите название мероприятия"
         />
       </section>
       <section>
@@ -53,6 +54,7 @@ const CreateForm = () => {
           name="organizerName"
           className={styles.input}
           required
+          placeholder="Введите название организатора"
           maxLength={500}
         />
 
@@ -84,6 +86,7 @@ const CreateForm = () => {
           name="organizerContactInfo"
           className={styles.input}
           required
+          placeholder="Введите контактную информацию"
           maxLength={5000}
         ></textarea>
       </section>
@@ -102,6 +105,7 @@ const CreateForm = () => {
           name="venueAddress"
           className={styles.input}
           required
+          placeholder="Введите адрес"
           maxLength={1000}
         />
 
@@ -117,6 +121,7 @@ const CreateForm = () => {
           name="venueName"
           className={styles.input}
           required
+          placeholder="Введите место проведения"
           maxLength={1000}
         />
 
@@ -132,11 +137,14 @@ const CreateForm = () => {
           name="venueCapacity"
           className={styles.input}
           required
+          placeholder="Введите вместимость"
           min={1}
         />
       </section>
 
-      <button type="submit" className={styles.submitButton}>Создать мероприятие</button>
+      <button type="submit" className={styles.submitButton}>
+        Создать соревнование
+      </button>
     </form>
   );
 };

@@ -3,6 +3,9 @@
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import postgres from "postgres";
+import { signIn } from "@/auth";
+import { signOut } from "@/auth";
+import { AuthError } from "next-auth";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
@@ -56,4 +59,27 @@ export async function createCompetition(formData: FormData) {
 
   revalidateTag("allEvents");
   redirect("/dashboard/competitions");
+}
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    await signIn("credentials", formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return "Неверные учетные данные";
+        default:
+          return "Что-то пошло не так";
+      }
+    }
+    throw error;
+  }
+}
+
+export async function singOutOfAccount() {
+  await signOut();
 }

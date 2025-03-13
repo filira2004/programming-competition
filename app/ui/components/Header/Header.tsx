@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import Link from "next/link";
 import styles from "./header.module.css";
 import PCLogo from "../PCLogo/PCLogo";
 import HeaderNav from "../HeaderNav/HeaderNav";
 import HeaderNavToggleButton from "../HeaderNavToggleButton/HeaderNavToggleButton";
+import { Session } from "next-auth";
 
-const Header = () => {
+interface HeaderProps {
+  session: Session | null;
+}
+
+const Header: FC<HeaderProps> = ({ session }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
@@ -20,7 +25,7 @@ const Header = () => {
         <PCLogo />
       </Link>
       <HeaderNavToggleButton isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-      <HeaderNav isMenuOpen={isMenuOpen} />
+      <HeaderNav isMenuOpen={isMenuOpen} session={session}/>
     </header>
   );
 };
